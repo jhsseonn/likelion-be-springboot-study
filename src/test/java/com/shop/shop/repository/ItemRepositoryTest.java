@@ -87,7 +87,7 @@ class ItemRepositoryTest {
         List<Item> itemList =
                 itemRepository.findByPriceLessThanOrderByPriceDesc(10005);
         for(Item item: itemList){
-            System.out.println(item.toString())0;
+            System.out.println(item.toString());
         }
     }
 
