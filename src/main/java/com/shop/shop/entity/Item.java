@@ -8,10 +8,12 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "item")
 @Getter
 @Setter
 @ToString
-public class item {
+public class Item {
 
     @Id
     @Column(name="item_id")
