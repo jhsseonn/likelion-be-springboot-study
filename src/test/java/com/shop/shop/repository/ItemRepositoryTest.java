@@ -44,6 +44,7 @@ class ItemRepositoryTest {
         item.setStockNumber(100);
         item.setRegTime(LocalDateTime.now());
         item.setUpdateTime(LocalDateTime.now());
+
         Item savedItem = itemRepository.save(item);
         System.out.println(savedItem.toString());
     }
@@ -175,19 +176,21 @@ class ItemRepositoryTest {
     public void queryDslTest2(){
         this.createItemList2();
 
+        // 쿼리에 들어갈 조건을 만들어주는 빌더
         BooleanBuilder booleanBuilder = new BooleanBuilder();
         QItem item = QItem.item;
         String itemDetail = "테스트 상품 상세 설명";
         int price = 10003;
         String itemSellStat = "SELL";
 
-        booleanBuilder.and(item.itemDetail.like("%" + itemDetail + "%"));
+        booleanBuilder.and(item.itemDetail.like("%" + itemDetail + "%")); // and 조건 추가
         booleanBuilder.and(item.price.gt(price));
 
         if(StringUtils.equals(itemSellStat, ItemSellStatus.SELL)){
             booleanBuilder.and(item.itemSellStatus.eq(ItemSellStatus.SELL));
         }
 
+        // 데이터를 페이징회 조회하도록 pageRequest.of() 메소드를 이용해 Pageble 객체를 생성
         Pageable pageable = PageRequest.of(0, 5);
         Page<Item> itemPagingResult =
                 itemRepository.findAll(booleanBuilder, pageable);
