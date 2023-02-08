@@ -68,10 +68,17 @@ class PostRepositoryTest {
     }
 
     @Test
-    void findByPostViewLessThenOrderByDesc() {
+    @DisplayName("게시글 조회수 Less Than 내림차순 테스트")
+    void findByPostViewLessThanOrderByPostViewDesc() {
+        this.createPostTest();
+        List<Post> postList=postRepository.findByPostViewLessThanOrderByPostViewDesc(104);
+        for(Post post:postList){
+            System.out.println(post.toString());
+        }
     }
 
     @Test
     void findByPostContent() {
+
     }
 }
