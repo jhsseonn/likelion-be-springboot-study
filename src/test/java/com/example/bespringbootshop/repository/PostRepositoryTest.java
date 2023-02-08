@@ -1,6 +1,7 @@
 package com.example.bespringbootshop.repository;
 
 import com.example.bespringbootshop.entity.Post;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,17 +37,23 @@ class PostRepositoryTest {
     }
 
     @Test
+    @DisplayName("게시글 제목 검색 테스트")
     void findByPostTitle() {
         this.createPostTest();
-        List<Post> postList = postRepository.findByPostTitle("상품 게시글 2");
+        List<Post> postList = postRepository.findByPostTitle("상품 게시글2");
         for(Post post:postList){
             System.out.println(post.toString());
         }
     }
 
     @Test
-    void findByPostTitleOrContent() {
-
+    @DisplayName("게시글 제목+내용으로 검색 테스트")
+    void findByPostTitleOrPostContent() {
+        this.createPostTest();
+        List<Post> postList = postRepository.findByPostTitleOrPostContent("상품 게시글1", "상품 게시글 상세 설명1");
+        for(Post post:postList){
+            System.out.println(post.toString());
+        }
     }
 
     @Test
