@@ -78,7 +78,12 @@ class PostRepositoryTest {
     }
 
     @Test
+    @DisplayName("@Query 이용해 상품 상세 내용으로 검색")
     void findByPostContent() {
-
+        this.createPostTest();
+        List<Post> postList=postRepository.findByPostContent("상품 게시글 상세 설명");
+        for(Post post:postList){
+            System.out.println(post.toString());
+        }
     }
 }
