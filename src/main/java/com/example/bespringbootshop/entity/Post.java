@@ -29,6 +29,7 @@ public class Post {
     @Column(nullable = false)
     private String postContent;
 
+    @Column(name="postView", nullable = false)
     private int postView;
 
     private int postWishes;
