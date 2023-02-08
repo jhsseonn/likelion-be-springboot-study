@@ -20,20 +20,18 @@ public class Post {
     private Long id;
 
     @Column(nullable = false)
-    private String writer;
+    private String postWriter;
 
     @Column(nullable = false, length=50)
-    private String title;
+    private String postTitle;
 
     @Lob
     @Column(nullable = false)
-    private String content;
+    private String postContent;
 
-    @Column(nullable = false)
-    private int check;
+    private int postView;
 
-    @Column(nullable = false)
-    private int wish;
+    private int postWishes;
 
     private LocalDateTime regTime;
 
