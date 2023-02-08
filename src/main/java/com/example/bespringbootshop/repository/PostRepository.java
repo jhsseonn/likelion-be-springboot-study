@@ -11,7 +11,7 @@ import java.util.List;
 public interface PostRepository extends JpaRepository<Post, Long>{
     List<Post> findByPostTitle(String postTitle);
     List<Post> findByPostTitleOrPostContent(String postTitle, String postContent);
-//    List<Post> findByViewLessThan(Integer postView);
+    List<Post> findByPostViewLessThan(Integer postView);
 //    List<Post> findByViewLessThenOrderByDesc(Integer postView);
 
 //    @Query("select i from Post i where i.postContent like %:content% order by i.postView desc")
