@@ -1,5 +1,6 @@
 package com.example.bespringbootshop.repository;
 
+import com.example.bespringbootshop.entity.Item;
 import com.example.bespringbootshop.entity.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -1,14 +1,21 @@
 package com.example.bespringbootshop.repository;
 
+import com.example.bespringbootshop.constant.ItemSellStatus;
 import com.example.bespringbootshop.entity.Item;
 import com.example.bespringbootshop.entity.Post;
+import com.example.bespringbootshop.entity.QItem;
+import com.querydsl.jpa.impl.JPAQuery;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.querydsl.QPageRequest;
 import org.springframework.test.context.TestPropertySource;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -18,6 +25,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestPropertySource(locations="classpath:application-test.properties")
 class PostRepositoryTest {
 
+    @PersistenceContext
+    EntityManager em;
     @Autowired
     PostRepository postRepository;
 
@@ -86,4 +95,5 @@ class PostRepositoryTest {
             System.out.println(post.toString());
         }
     }
+
 }
