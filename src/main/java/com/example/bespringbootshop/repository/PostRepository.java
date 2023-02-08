@@ -13,7 +13,6 @@ public interface PostRepository extends JpaRepository<Post, Long>{
     List<Post> findByPostTitleOrPostContent(String postTitle, String postContent);
     List<Post> findByPostViewLessThan(Integer postView);
     List<Post> findByPostViewLessThanOrderByPostViewDesc(Integer postView);
-
-//    @Query("select i from Post i where i.postContent like %:content% order by i.postView desc")
-//    List<Post> findByPostContent(@Param("postContent") String postContent);
+    @Query("select i from Post i where i.postContent like %:postContent% order by i.postView desc")
+    List<Post> findByPostContent(@Param("postContent") String postContent);
 }
