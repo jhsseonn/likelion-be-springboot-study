@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -36,10 +37,16 @@ class PostRepositoryTest {
 
     @Test
     void findByPostTitle() {
+        this.createPostTest();
+        List<Post> postList = postRepository.findByPostTitle("상품 게시글 2");
+        for(Post post:postList){
+            System.out.println(post.toString());
+        }
     }
 
     @Test
     void findByPostTitleOrContent() {
+
     }
 
     @Test
