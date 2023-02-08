@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface PostRepository extends JpaRepository<Post, Long>{
-//    List<Post> findByPostTitle(String postTitle);
+    List<Post> findByPostTitle(String postTitle);
 //    List<Post> findByPostTitleOrContent(String postTitle, String postContent);
 //    List<Post> findByViewLessThan(Integer postView);
 //    List<Post> findByViewLessThenOrderByDesc(Integer postView);
