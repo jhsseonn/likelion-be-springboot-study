@@ -1,5 +1,6 @@
 package com.example.bespringbootshop.repository;
 
+import com.example.bespringbootshop.entity.Item;
 import com.example.bespringbootshop.entity.Post;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
@@ -57,11 +58,17 @@ class PostRepositoryTest {
     }
 
     @Test
-    void findByCheckLessThan() {
+    @DisplayName("조회수 Less Than 테스트")
+    void findByPostViewLessThan() {
+        this.createPostTest();
+        List<Post> postList=postRepository.findByPostViewLessThan(103);
+        for(Post post:postList){
+            System.out.println(post.toString());
+        }
     }
 
     @Test
-    void findByCheckLessThenOrderByDesc() {
+    void findByPostViewLessThenOrderByDesc() {
     }
 
     @Test
