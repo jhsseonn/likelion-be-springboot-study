@@ -96,7 +96,7 @@ class PostRepositoryTest {
         }
     }
 
-    // 특정 작성자글 중 제목, 내용으로 키워드 포함 검색
+    // 특정 작성자글 중 제목, 내용으로 키워드가 들어가는 게시글 조회
     @Test
     @DisplayName("Querydsl 조회 테스트2")
     public void queryDslTest2(){
