@@ -2,6 +2,7 @@ package com.example.bespringbootshop.entity;
 
 import com.example.bespringbootshop.constant.ItemSellStatus;
 import com.example.bespringbootshop.repository.ItemRepository;
+import com.example.bespringbootshop.repository.MemberRepository;
 import com.example.bespringbootshop.repository.OrderRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,6 +31,9 @@ public class OrderTest {
 
     @PersistenceContext
     EntityManager em;
+
+    @Autowired
+    MemberRepository memberRepository;
 
     public Item createItem(){
         Item item = new Item();
@@ -66,5 +70,35 @@ public class OrderTest {
         Order savedOrder = orderRepository.findById(order.getId())
                 .orElseThrow(EntityNotFoundException::new);
         assertEquals(3, savedOrder.getOrderItems().size());
+    }
+
+    public Order createOrder(){
+        Order order = new Order();
+
+        for(int i=0;i<3;i++){
+            Item item = createItem();
+            itemRepository.save(item);
+            OrderItem orderItem = new OrderItem();
+            orderItem.setItem(item);
+            orderItem.setCount(10);
+            orderItem.setOrderPrice(1000);
+            orderItem.setOrder(order);
+            order.getOrderItems().add(orderItem);
+        }
+
+        Member member = new Member();
+        memberRepository.save(member);
+
+        order.setMember(member);
+        orderRepository.save(order);
+        return order;
+    }
+
+    @Test
+    @DisplayName("고아객체 제거 테스트")
+    public void orphanRemovalTest(){
+        Order order = this.createOrder();
+        order.getOrderItems().remove(0);
+        em.flush();
     }
 }
