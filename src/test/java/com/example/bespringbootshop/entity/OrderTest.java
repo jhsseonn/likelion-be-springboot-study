@@ -3,6 +3,7 @@ package com.example.bespringbootshop.entity;
 import com.example.bespringbootshop.constant.ItemSellStatus;
 import com.example.bespringbootshop.repository.ItemRepository;
 import com.example.bespringbootshop.repository.MemberRepository;
+import com.example.bespringbootshop.repository.OrderItemRepository;
 import com.example.bespringbootshop.repository.OrderRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,6 +35,9 @@ public class OrderTest {
 
     @Autowired
     MemberRepository memberRepository;
+
+    @Autowired
+    OrderItemRepository orderItemRepository;
 
     public Item createItem(){
         Item item = new Item();
@@ -100,5 +104,19 @@ public class OrderTest {
         Order order = this.createOrder();
         order.getOrderItems().remove(0);
         em.flush();
+    }
+
+    @Test
+    @DisplayName("지연 로딩 테스트")
+    public void lazyLoadingTest(){
+        Order order = this.createOrder();
+        Long orderItemId = order.getOrderItems().get(0).getId();
+        em.flush();
+        em.clear();
+
+        OrderItem orderItem = orderItemRepository.findById(orderItemId)
+                .orElseThrow(EntityNotFoundException::new);
+        System.out.println("Order class : "+
+                orderItem.getOrder().getClass());
     }
 }
