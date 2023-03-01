@@ -4,9 +4,12 @@ import com.example.bespringbootshop.dto.ItemFormDto;
 import com.example.bespringbootshop.dto.ItemImgDto;
 import com.example.bespringbootshop.entity.Item;
 import com.example.bespringbootshop.entity.ItemImg;
+import com.example.bespringbootshop.entity.ItemSearchDto;
 import com.example.bespringbootshop.repository.ItemImgRepository;
 import com.example.bespringbootshop.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -66,5 +69,10 @@ public class ItemService {
         }
 
         return item.getId();
+    }
+
+    @Transactional(readOnly = true)
+    public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
+        return itemRepository.getAdminItemPage(itemSearchDto, pageable);
     }
 }
