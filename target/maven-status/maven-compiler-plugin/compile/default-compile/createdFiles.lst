@@ -1,1 +1,12 @@
+com/example/bespringbootshop/repository/ItemRepositoryCustomImpl.class
+com/example/bespringbootshop/entity/QItemImg.class
+com/example/bespringbootshop/entity/QBaseEntity.class
+com/example/bespringbootshop/entity/QPost.class
+com/example/bespringbootshop/entity/QBaseTimeEntity.class
 com/example/bespringbootshop/entity/QItem.class
+com/example/bespringbootshop/repository/ItemRepositoryCustom.class
+com/example/bespringbootshop/entity/QOrderItem.class
+com/example/bespringbootshop/entity/QMember.class
+com/example/bespringbootshop/entity/QOrder.class
+com/example/bespringbootshop/entity/QCart.class
+com/example/bespringbootshop/entity/QCartItem.class
