@@ -2,6 +2,7 @@ package com.example.bespringbootshop.service;
 
 import com.example.bespringbootshop.dto.ItemFormDto;
 import com.example.bespringbootshop.dto.ItemImgDto;
+import com.example.bespringbootshop.dto.MainItemDto;
 import com.example.bespringbootshop.entity.Item;
 import com.example.bespringbootshop.entity.ItemImg;
 import com.example.bespringbootshop.entity.ItemSearchDto;
@@ -74,5 +75,10 @@ public class ItemService {
     @Transactional(readOnly = true)
     public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
         return itemRepository.getAdminItemPage(itemSearchDto, pageable);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
+        return itemRepository.getMainItemPage(itemSearchDto, pageable);
     }
 }
