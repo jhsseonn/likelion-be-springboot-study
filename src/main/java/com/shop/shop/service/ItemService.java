@@ -9,5 +9,7 @@ public interface ItemService {
 
     Long saveItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception;
 
-    //Long updateItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception;
+    Long updateItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception;
+
+    ItemFormDto getItemDtl(Long itemId);
 }
