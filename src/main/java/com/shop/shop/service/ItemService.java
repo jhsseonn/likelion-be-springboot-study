@@ -2,6 +2,7 @@ package com.shop.shop.service;
 
 import com.shop.shop.dto.ItemFormDto;
 import com.shop.shop.dto.ItemSearchDto;
+import com.shop.shop.dto.MainItemDto;
 import com.shop.shop.entity.Item;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,5 +20,7 @@ public interface ItemService {
     ItemFormDto getItemDtl(Long itemId);
 
     Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable);
+
+    Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable);
 
 }
